@@ -1,0 +1,161 @@
+*box-sizing: border-box;
+
+#single-art {
+    display: flex;
+    position: relative;
+}
+
+.triangle {
+    fill: black;
+}
+
+#scroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.triangle:hover {
+    transition: 0.2s ease-in;
+    fill: rgb(61, 105, 105);
+}
+
+
+.top-text {
+    position: relative;
+    text-align: center;
+    margin: 2%;
+    padding-top: 100px;
+    margin-left: 5%;
+    margin-right: 10%;
+    width: 90%;
+}
+
+.title {
+    font-family: Merriweather;
+}
+
+.short-description {
+    font-family: Merriweather;
+    margin: 2% 10%;
+
+}
+
+
+
+.topimg {
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.top-movie {
+    position: relative;
+    width: 90%;
+    height: auto;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.long-description {
+    position: relative;
+    font-style: italic;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 10%;
+    padding: 5% 0;
+    letter-spacing: 1.5px;
+
+}
+
+.img-gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    width: 90%;
+    margin-left: 5%;
+    margin-right: 10%;
+    margin-bottom: 10%;
+    margin-top: 50px;
+    grid-template-rows: auto;
+
+}
+
+.img-gallery img{
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 70vh;
+    max-height: 100vh;
+    object-fit: cover;
+    grid-row-end: span;
+
+}
+
+.landscape {
+    grid-column: 1/-1;
+}
+
+
+
+
+
+
+/******* Mobile version break point ******/
+
+@media screen and (max-width: 1131px) {
+    .top-nav {
+
+        background: none;
+
+    }
+
+    .top-text {
+        margin-top: 35px;
+        margin-bottom: 35px;
+
+    }
+
+    .short-description {
+        margin: 35px 0;
+
+    }
+
+    header ul {
+        background: white;
+        width: 100vw;
+
+    }
+
+
+    .long-description {
+        font-size: 10pt;
+    }
+
+    .area {
+        font-size: 11pt;
+    }
+
+    .img-gallery {
+        grid-template-columns: 1fr;
+        grid-gap: 40px;
+
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 10%;
+        padding-bottom: 0;
+
+    }
+}

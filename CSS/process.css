@@ -1,0 +1,180 @@
+.triangle {
+    fill: black;
+}
+
+#scroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.triangle:hover {
+    transition: 0.2s ease-in;
+    fill: rgb(61, 105, 105);
+}
+
+
+
+
+.process-video {
+    margin-top: 170px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.process-video video {
+    width: 100%;
+    height: 25rem;
+}
+
+.quote {
+    margin-right: 20%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.quote p {
+    font-size: 1.5rem;
+    text-align: center;
+    font-style: italic;
+    color: #695559;
+}
+
+
+.process-description {
+    display: grid;
+    grid-gap: 20px;
+    line-height: 2em;
+    ;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 8%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "img-area-1 p-area-1"
+        "p-area-2 img-area-2"
+        "img-area-3 p-area-3"
+        "p-area-4 img-area-4"
+    ;
+}
+
+.img-area-1 {
+    grid-area: img-area-1;
+}
+
+.img-area-2 {
+    grid-area: img-area-2;
+}
+
+.img-area-3 {
+    grid-area: img-area-3;
+}
+
+.img-area-3 {
+    grid-area: img-area-3;
+}
+
+.p-area-1 {
+    grid-area: p-area-1;
+}
+
+.p-area-2 {
+    grid-area: p-area-2;
+}
+
+.p-area-3 {
+    grid-area: p-area-3;
+}
+
+.p-area-4 {
+    grid-area: p-area-4;
+}
+
+
+/*.p-area-1, .p-area-2, .p-area-3, .p-area-4 {background-color: #acb8c1a6;}*/
+
+
+.process-description img {
+    width: 100%;
+}
+
+
+.process-description p {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0%;
+    text-align: justify;
+}
+
+
+
+/******* Mobile version break point ******/
+
+@media screen and (max-width: 1024px) {
+
+    .process-description {
+        margin-bottom: 50%;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "img-area-1"
+            "p-area-1"
+            "img-area-2"
+            "p-area-2"
+            "img-area-3"
+            "p-area-3"
+            "img-area-4"
+            "p-area-4";
+    }
+
+}
+
+@media screen and (max-width: 760px) {
+
+    .process-video {
+        margin-top: 100px;
+    }
+
+    .process-video video {
+        z-index: 100;
+    }
+
+    .process-description {
+        margin-bottom: 50px;
+        display: grid;
+        grid-template-columns: 1fr;
+
+        grid-template-areas:
+            "img-area-1"
+            "p-area-1"
+            "img-area-2"
+            "p-area-2"
+            "img-area-3"
+            "p-area-3"
+            "img-area-4"
+            "p-area-4";
+    }
+
+}
+
+
+@media screen and (max-width: 590px) {
+
+    .process-video {
+        margin-top: 60px;
+    }
+
+
+}

@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap');
+
+
+* {
+
+    text-align: center;
+}
+
+.triangle {
+    fill: black;
+}
+
+#scroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.triangle:hover {
+    transition: 0.2s ease-in;
+    fill: rgb(61, 105, 105);
+}
+
+.info {
+    z-index: 1;
+    font-size: 30px;
+    color: #000;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+
+    align-self: center;
+    font-family: 'Merriweather', serif;
+
+}
+
+
+
+main {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin-top: 125px;
+
+}
+
+main .artworkwrapper {
+    position: relative;
+    height: auto;
+    width: 90%;
+    margin: auto;
+    padding: 45px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30vh 30vh 30vh 30vh 30vh 30vh 30vh 30vh auto;
+    grid-gap: 2vh;
+    grid-auto-flow: row;
+
+
+}
+
+
+main .artworkwrapper .artwork {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+main .artworkwrapper .artwork:first-child {
+
+    grid-row: 1/4;
+
+}
+
+main .artworkwrapper .artwork:first-child .info {
+    display: grid;
+    padding-bottom: 30vh;
+
+}
+
+main .artworkwrapper .artwork:nth-child(2) .info {
+    display: grid;
+    padding-bottom: 30vh;
+
+}
+
+main .artworkwrapper .artwork:nth-child(2) {
+    grid-row: 1/4;
+}
+
+main .artworkwrapper .artwork:nth-child(3) {
+    grid-row: 4/8;
+
+}
+
+
+main .artworkwrapper .artwork:nth-child(4) {
+    grid-row: 4/8;
+}
+
+main .artworkwrapper .artwork:nth-child(5) {
+    grid-row: 8/-1;
+}
+main .artworkwrapper .artwork:nth-child(6) {
+    grid-row: 8/-1
+}
+
+
+
+main .artworkwrapper .artwork img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center bottom;
+    filter: brightness(1) grayscale(0);
+}
+
+main .artworkwrapper .artwork:hover .artwork {
+    background: white;
+    z-index: 10;
+    position: absolute;
+
+
+}
+
+.artwork:hover > .info {
+    opacity: 1;
+
+}
+
+.artwork {
+    display: grid;
+    overflow: hidden;
+    cursor: pointer;
+
+}
+
+.artwork a {
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    min-height: 800px;
+}
+
+.artwork img {
+    position: relative;
+    width: 100%;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    min-height: 800px;
+}
+
+
+.artwork > .info {
+    z-index: 10;
+    display: grid;
+    background: rgba(255, 255, 255, 0.8);
+    place-content: center;
+    transition: .1s ease-in-out;
+    height: 100%;
+    opacity: 0;
+
+}
+
+
+
+/******* Mobile version break point ******/
+
+@media screen and (max-width: 760px) {
+    .artwork > .info {
+        opacity: 1;
+        color: white;
+        background: #0000001c;
+
+    }
+
+    .top-nav {
+        background: none;
+    }
+
+    .header ul {
+        background: white;
+        width: 100vw;
+
+    }
+
+    main .artworkwrapper {
+        position: relative;
+        height: auto;
+        width: 90%;
+        margin: auto;
+        padding: 45px 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-gap: 2vh;
+        grid-auto-flow: row;
+        height: 100%;
+
+
+    }
+
+
+    main .artworkwrapper .artwork img {
+        height: auto;
+
+    }
+
+    main .artworkwrapper .artwork:first-child .info {
+        padding-top: 50%;
+
+    }
+
+    main .artworkwrapper .artwork:first-child {
+        grid-row: 1/2;
+
+    }
+
+    main .artworkwrapper .artwork:nth-child(2) {
+        grid-row: 2/3;
+    }
+
+    main .artworkwrapper .artwork:nth-child(3) {
+        grid-row: 3/4;
+    }
+
+    main .artworkwrapper .artwork:nth-child(4) {
+        grid-row: 4/5;
+    }
+
+    main .artworkwrapper .artwork:nth-child(5) {
+        grid-row: 5/6;
+    }
+      main .artworkwrapper .artwork:nth-child(6) {
+        grid-row: 6/7;
+    }
+
+    main .artworkwrapper .artwork:nth-child(3) .info {
+        margin-top: 0;
+    }
+
+}

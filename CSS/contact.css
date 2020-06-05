@@ -1,0 +1,92 @@
+.contact {
+
+    margin-top: 125px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 100px;
+    flex-wrap: wrap;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 20px;
+
+
+}
+
+form {
+    max-width: 420px;
+    margin: 50px auto;
+}
+
+.contact-input {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    border: 1px solid #acb8c1a6;
+    transition: all 0.3s;
+    padding: 13px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+}
+
+
+[textarea] {
+    height: 150px;
+    line-height: 150%;
+    resize: vertical;
+}
+
+
+[type="submit"] {
+    background: #acb8c1a6;
+
+    width: 100px;
+    border: 0;
+    cursor: pointer;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: all 0.3s;
+    margin-top: -4px;
+    font-weight: 300;
+}
+
+[type="submit"]:hover {
+    background: gray;
+}
+
+footer {
+     position: absolute;
+     bottom: 0;
+ }
+
+
+/******* Mobile version break point ******/
+
+@media screen and (max-width: 760px) {
+
+    .top-nav {
+
+        background: none;
+
+    }
+
+    header ul {
+        background: transparent;
+        width: 100vw;
+
+    }
+
+    .feedback-input {
+        font-size: 12px;
+
+    }
+
+}

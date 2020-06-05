@@ -1,0 +1,178 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.triangle {
+    fill: black;
+}
+
+#scroll {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 15px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    padding: 2px;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.triangle:hover {
+    transition: 0.2s ease-in;
+    fill: rgb(61, 105, 105);
+}
+
+
+.wrapper {
+    margin-top: 170px;
+    display: flex;
+    flex-flow: column wrap;
+    width: 100%;
+    justify-content: space-around;
+    width: 90%;
+    margin-left: 5%;
+
+    margin-bottom: 50px;
+}
+
+#image {
+    width: 100%;
+
+
+    padding: 0;
+    /*    padding-left: 100px;*/
+    margin: 0;
+}
+
+.info-items {
+    text-align: center;
+    display: flex;
+    flex-flow: column;
+    align-self: flex-start;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.items {
+    text-align: center;
+    display: flex;
+    flex-flow: row;
+    align-self: flex-start;
+    justify-content: center;
+    width: 100%;
+}
+
+.top-wrapper {
+    justify-content: space-around;
+}
+
+main ul {
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin-right: 0px;
+    padding: 0;
+    overflow: hidden;
+    font-size: 15px;
+
+}
+
+article {
+    padding-left: 10%;
+}
+
+main ul li {
+    display: list-item;
+    list-style: none;
+    padding: 30px;
+    margin: 0 1px;
+}
+
+main li a {
+    min-width: 100px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    color: black;
+    font-weight: inherit;
+    text-decoration: none;
+}
+
+main li:hover a {
+    color: #695559;
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+.shown {
+    display: block;
+}
+
+.styling > * span {
+    font-size: 20px;
+    font-weight: 900;
+
+    line-height: 35px;
+}
+
+/******* Mobile version break point ******/
+
+@media screen and (max-width: 760px) {
+
+    .top-nav {
+
+        background: none;
+
+    }
+
+    header ul {
+        background: transparent;
+        width: 100vw;
+
+    }
+
+    .wrapper {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+
+    main ul li {
+        padding: 15px;
+
+    }
+
+
+
+
+}
+
+@media screen and (max-width: 599px) {
+
+
+
+
+    main ul li {
+        padding: 10px;
+
+    }
+
+
+
+}
