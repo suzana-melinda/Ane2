@@ -5,6 +5,10 @@
     position: relative;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .triangle {
     fill: black;
 }
