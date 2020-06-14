@@ -290,8 +290,9 @@ header li ul li a {
         width: 80%;
         right: 0px;
         top: inherit;
-        bottom: 50px;
-        margin-right: 50px;
+        bottom:60px;
+        height: auto;
+        margin-right: 30px;
 
 
     }
@@ -300,16 +301,24 @@ header li ul li a {
         display: flex;
         justify-content: space-around;
         align-items: baseline;
-        flex-flow: column-reverse;
+        flex-flow: column;
         width: 50px;
+        margin-bottom: 0;
     }
 
     .dot-title {
         margin-right: 0;
-        font-size: 1em;
+            font-size: 1em;
+        align-self: flex-start;
+        bottom: 0px;
+        width:50px;
+        position: absolute;
+
+
     }
 
     .circle {
+        margin-bottom: -10px;
 
         align-self: baseline;
 

@@ -88,12 +88,12 @@ function renderLandingPage(LandingPageImageArray) {
     const a = dotsCopy.querySelector('a');
     dotsCopy.querySelector(".circle-wrapper").addEventListener("click", changeGalleryBg)
 
-        if (a) {
-            a.href += LandingPageImageArray.id;
-            a.id = LandingPageImageArray.id;
+    if (a) {
+        a.href += LandingPageImageArray.id;
+        a.id = LandingPageImageArray.id;
 
 
-        }
+    }
     document.querySelector(".circles-wrapper").appendChild(dotsCopy);
 
 
@@ -105,7 +105,7 @@ function changeGalleryBg(e) {
     let slides = document.querySelectorAll(".test");
     slides.forEach((slide, index) => {
         if (slide.id === e.target.id) {
-                        slide.style.opacity = "1";
+            slide.style.opacity = "1";
 
             console.log(index);
             slideIndex = index;
@@ -116,14 +116,14 @@ function changeGalleryBg(e) {
 
     })
 
-     titleLinks = document.querySelectorAll(".title-link");
-    titleLinks.forEach( link => {
+    titleLinks = document.querySelectorAll(".title-link");
+    titleLinks.forEach(link => {
 
         if (link.id === e.target.id) {
-                        link.style.visibility = "visible"
+            link.style.visibility = "visible"
 
         } else {
-                link.style.visibility = "hidden"
+            link.style.visibility = "hidden"
 
         }
     });
@@ -136,6 +136,7 @@ function changeGalleryBg(e) {
             title.style.opacity = "1";
         } else {
             title.style.opacity = "0";
+
         }
     });
     circles = document.querySelectorAll(".circle");
@@ -162,9 +163,9 @@ function showSlides(e) {
     let slides = document.getElementsByClassName("test");
     for (i = 0; i < slides.length; i++) {
 
-                    slides[i].style.backgroundColor = "black"  ;
+        slides[i].style.backgroundColor = "black";
 
-            slides[i].style.opacity = "0"  ;
+        slides[i].style.opacity = "0";
 
 
     }
@@ -175,15 +176,15 @@ function showSlides(e) {
 
 
 
-        slides[slideIndex - 1].style.opacity = "1";
+    slides[slideIndex - 1].style.opacity = "1";
     titleLinks = document.querySelectorAll(".title-link");
-    titleLinks.forEach( link => {
+    titleLinks.forEach(link => {
 
         if (link.id === slides[slideIndex - 1].id) {
-                        link.style.visibility = "visible"
+            link.style.visibility = "visible"
 
         } else {
-                link.style.visibility = "hidden"
+            link.style.visibility = "hidden"
 
         }
     });
@@ -195,8 +196,10 @@ function showSlides(e) {
 
             title.style.opacity = "1";
 
+
         } else {
             title.style.opacity = "0";
+
 
 
         }
