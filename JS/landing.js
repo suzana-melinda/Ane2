@@ -1,96 +1,82 @@
+/********* Calling getData function after the page loaded *********/
+
 window.addEventListener("load", getData);
-
-
-
-const btnMenu = document.querySelector(".menu-btn");
-const btnExit = document.querySelector(".exit-btn");
-const headerUl = document.getElementById("menu");
-
-btnMenu.addEventListener("click", showNav);
-
-function showNav() {
-    headerUl.classList.add("shown");
-    btnMenu.classList.add("hidden")
-    btnMenu.classList.remove("shown");
-    btnExit.classList.remove("hidden");
-}
-
-btnExit.addEventListener("click", closeMenu);
-
-function closeMenu() {
-
-
-    headerUl.classList.remove("shown");
-    btnExit.classList.add("hidden");
-    btnMenu.classList.remove("hidden");
-    btnMenu.classList.remove("shown");
-}
-
 
 
 
 /***** Get Data from WP *****/
 
 
-const link1 = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork?per_page=100&_embed";
+const apiLink = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork?per_page=100&_embed";
 
 
 
 
-/***** fetch Data *****/
+/***** Fetch Data *****/
 
 function getData() {
 
-    fetch(link1)
+    fetch(apiLink)
         .then(function (response) {
             return response.json();
         })
-        .then(showData);
-
-
+        .then(loopData);
 }
 
-function showData(artWorkArray) {
-    artWorkArray.forEach(art => {
 
-        renderLandingPage(art);
+
+/***** Looping data and sending singleData to showData function *****/
+
+function loopData(data) {
+    data.forEach(singleData => {
+
+        showData(singleData);
 
     });
-    showSlides();
+    changeSlide();
 
 }
 
 
 
+/***** Display template with WP Data in the DOM *****/
 
-function renderLandingPage(LandingPageImageArray) {
+function showData(singleData) {
+
+    /***** Rendering background images template *****/
 
     const template = document.querySelector(".landing").content;
-
     const copy = template.cloneNode(true);
 
-    copy.querySelector(".current-bg").src = LandingPageImageArray.cover_image.guid
-    copy.querySelector('.current-bg').id = LandingPageImageArray.id;
+    const currentBg = copy.querySelector(".current-bg");
+    currentBg.src = singleData.cover_image.guid
+    currentBg.id = singleData.id;
+    currentBg.alt = singleData.title.rendered;
 
     document.querySelector(".bg-container").appendChild(copy);
 
 
+    /***** Rendering dots template *****/
 
     const dotsTemplate = document.querySelector(".circles-temp").content;
-
     const dotsCopy = dotsTemplate.cloneNode(true);
 
-    dotsCopy.querySelector('.dot-title').textContent = LandingPageImageArray.art_name;
-    dotsCopy.querySelector('.dot-title').id = LandingPageImageArray.id;
-    dotsCopy.querySelector('.circle').id = LandingPageImageArray.id;
-    dotsCopy.querySelector(".circle-wrapper").id = LandingPageImageArray.id;
+    dotsCopy.querySelector('.dot-title').textContent = singleData.art_name;
+    dotsCopy.querySelector('.dot-title').id = singleData.id;
+    dotsCopy.querySelector('.circle').id = singleData.id;
+    dotsCopy.querySelector(".circle-wrapper").id = singleData.id;
+
+
+
+
+    /***** Inserting singleData ID to the html link href *****/
 
     const a = dotsCopy.querySelector('a');
     dotsCopy.querySelector(".circle-wrapper").addEventListener("click", changeGalleryBg)
 
     if (a) {
-        a.href += LandingPageImageArray.id;
-        a.id = LandingPageImageArray.id;
+        a.href += singleData.id;
+        a.id = singleData.id;
 
 
     }
@@ -99,11 +85,22 @@ function renderLandingPage(LandingPageImageArray) {
 
 }
 
+/***** Defining index counter for change slide function *****/
+
 let slideIndex = 0;
 
+
+/***** Changing background after clikcing event *****/
+
 function changeGalleryBg(e) {
-    let slides = document.querySelectorAll(".test");
+
+    /***** Fetching background images from the DOM *****/
+
+    let slides = document.querySelectorAll(".current-bg");
     slides.forEach((slide, index) => {
+
+        /***** Showing the matching bg by checking the id *****/
+
         if (slide.id === e.target.id) {
             slide.style.opacity = "1";
 
@@ -115,6 +112,7 @@ function changeGalleryBg(e) {
         }
 
     })
+    /***** Handel links *****/
 
     titleLinks = document.querySelectorAll(".title-link");
     titleLinks.forEach(link => {
@@ -128,6 +126,8 @@ function changeGalleryBg(e) {
         }
     });
 
+    /***** Handel titles *****/
+
     dotsTitles = document.querySelectorAll(".dot-title");
     dotsTitles.forEach(title => {
 
@@ -139,6 +139,9 @@ function changeGalleryBg(e) {
 
         }
     });
+
+    /***** Handel nav dots *****/
+
     circles = document.querySelectorAll(".circle");
     circles.forEach(circle => {
 
@@ -149,7 +152,6 @@ function changeGalleryBg(e) {
             circle.style.background = "none";
         }
     });
-    console.log(e)
 
 }
 
@@ -157,11 +159,15 @@ function changeGalleryBg(e) {
 
 
 
-function showSlides(e) {
+function changeSlide() {
+
+    /***** Fetching background images from the DOM *****/
 
     let i;
-    let slides = document.getElementsByClassName("test");
+    let slides = document.getElementsByClassName("current-bg");
     for (i = 0; i < slides.length; i++) {
+
+        /***** Hidding all bg images from the DOM *****/
 
         slides[i].style.backgroundColor = "black";
 
@@ -169,14 +175,27 @@ function showSlides(e) {
 
 
     }
+
+    /***** Increasing index counter with 1 *****/
+
     slideIndex++;
+
+    /***** Resetting index counter to 1 when reaching to the end of the array *****/
+
     if (slideIndex > slides.length) {
         slideIndex = 1
     }
 
 
 
+
+    /***** Showing the current bg image *****/
+
     slides[slideIndex - 1].style.opacity = "1";
+
+
+    /***** Handel links *****/
+
     titleLinks = document.querySelectorAll(".title-link");
     titleLinks.forEach(link => {
 
@@ -188,6 +207,8 @@ function showSlides(e) {
 
         }
     });
+
+    /***** Handel titles *****/
 
     dotsTitles = document.querySelectorAll(".dot-title");
     dotsTitles.forEach(title => {
@@ -205,6 +226,9 @@ function showSlides(e) {
         }
     });
 
+
+    /***** Handel nav dots *****/
+
     circles = document.querySelectorAll(".circle");
     circles.forEach(circle => {
 
@@ -217,5 +241,7 @@ function showSlides(e) {
     });
 
 
-    setTimeout(showSlides, 5000); // Change image every 5 seconds
+    /***** Restarting the function to change to the the next bg image *****/
+
+    setTimeout(changeSlide, 5000); // Change bg image every 5 seconds
 };

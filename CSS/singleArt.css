@@ -10,7 +10,7 @@ html {
 }
 
 .triangle {
-    fill: black;
+    fill: #695559;
 }
 
 #scroll {
@@ -31,7 +31,7 @@ html {
 
 .triangle:hover {
     transition: 0.2s ease-in;
-    fill: rgb(61, 105, 105);
+    fill:#acb8c1a6;
 }
 
 
@@ -72,7 +72,10 @@ html {
     margin-left: 5%;
     margin-right: 5%;
 }
+video[poster]{
+    object-fit: cover;
 
+}
 .long-description {
     position: relative;
     font-style: italic;
@@ -114,7 +117,11 @@ html {
 
 
 
-
+footer{
+    display: none;
+    position: static;
+    bottom: 0;
+}
 
 
 /******* Mobile version break point ******/

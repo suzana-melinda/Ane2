@@ -3,7 +3,7 @@ html {
 }
 
 .triangle {
-    fill: black;
+    fill: #695559;
 }
 
 #scroll {
@@ -24,28 +24,35 @@ html {
 
 .triangle:hover {
     transition: 0.2s ease-in;
-    fill: rgb(61, 105, 105);
+    fill:#acb8c1a6;
 }
 
 
 
 
 .process-video {
-    margin-top: 170px;
     margin-right: 5%;
-    margin-left: 5%;
+    width: 100%;
+    height: 100%;
 }
 
-.process-video video {
-    width: 100%;
-    height: 25rem;
+.process-video > video {
+    width: 90%;
+    height: 100%;
+        margin-left: 5%;
+
+}
+video[poster]{
+    object-fit: cover;
+
 }
 
 .quote {
+        margin-top: 170px;
+
     margin-right: 20%;
     margin-left: 20%;
     margin-bottom: 5%;
-    margin-top: 5%;
 }
 
 .quote p {
@@ -60,7 +67,8 @@ html {
     display: grid;
     grid-gap: 20px;
     line-height: 2em;
-    ;
+        margin-top: 5%;
+
     margin-right: 5%;
     margin-left: 5%;
     margin-bottom: 8%;

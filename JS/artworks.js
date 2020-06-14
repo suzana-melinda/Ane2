@@ -1,122 +1,79 @@
-scroll = document.getElementById("scroll");
-window.onscroll = function () {
-    scrollDisplay()
-};
-
-function scrollDisplay() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        scroll.style.display = "block";
-    } else {
-        scroll.style.display = "none";
-    }
-}
-
-function scrollToTop() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-}
-
-
-
-
-
-const btnMenu = document.querySelector(".menu-btn");
-const btnExit = document.querySelector(".exit-btn");
-const headerUl = document.getElementById("menu");
-
-btnMenu.addEventListener("click", showNav);
-
-
-function showNav() {
-    headerUl.classList.add("shown");
-    btnMenu.classList.add("hidden")
-    btnMenu.classList.remove("shown");
-    btnExit.classList.remove("hidden");
-}
-
-btnExit.addEventListener("click", closeMenu);
-
-function closeMenu() {
-
-
-    headerUl.classList.remove("shown");
-    btnExit.classList.add("hidden");
-    btnMenu.classList.remove("hidden");
-    btnMenu.classList.remove("shown");
-}
-
-
-
-
+window.addEventListener("DOMContentLoaded", getData);
 
 /***** Get Data from WP *****/
 
 
-const link1 = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork?per_page=100&_embed";
-window.addEventListener("DOMContentLoaded", getData);
+const apiLink = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork?per_page=100&_embed";
 
 
 
 
-/***** fetch Data *****/
+/***** Fetch Data *****/
 
 function getData() {
 
+    /***** Getting gallery id from the URL parameters *****/
+
     const urlParams = new URLSearchParams(window.location.search);
     const the_art_id = urlParams.get('art_id');
-    const link2 = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork/" + the_art_id + "?per_page=100&_embed";
-
+    const singleGalleryApiLink = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork/" + the_art_id + "?per_page=100&_embed";
 
 
     if (the_art_id) {
-        fetch(link2)
+
+        /***** If there is an id in the URL parameters, we are in the single gallery page so we will call showGallery function and fetch the data from singleGalleryApiLink  *****/
+
+        fetch(singleGalleryApiLink)
             .then(function (response) {
                 return response.json()
             })
-            .then(showSingleArtPage)
+            .then(showGallery)
     } else {
-        fetch(link1)
+
+        /***** If not then we are in artwork page and we will call loopData function and fetch the data from the original apiLink  *****/
+
+        fetch(apiLink)
             .then(function (response) {
                 return response.json();
             })
-            .then(showData);
+            .then(loopData);
     }
+
 }
 
 
+/***** Looping data and sending singleData to showData function *****/
 
+function loopData(data) {
 
-function showData(artWorkArray) {
+    data.forEach(singleData => {
 
-    artWorkArray.forEach(art => {
-
-
-        renderArtworkPage(art);
-
-
-
-
+        showData(singleData);
 
     });
 
 }
 
 
-function renderArtworkPage(ArtworkPageArray) {
+/***** Display template with WP Data in the DOM *****/
+
+function showData(singleData) {
 
     const template = document.querySelector(".artwork-page").content;
 
     const copy = template.cloneNode(true);
 
 
-    copy.querySelector(".artwork-images").src = ArtworkPageArray.cover_image.guid;
+    copy.querySelector(".artwork-images").src = singleData.cover_image.guid;
 
-    copy.querySelector(".info").textContent = ArtworkPageArray.title.rendered;
+    copy.querySelector(".info").textContent = singleData.title.rendered;
+
+
+    /***** Inserting singleData ID to the html link href *****/
+
     const a = copy.querySelector('a');
-
-
     if (a) {
-        a.href += ArtworkPageArray.id;
+        a.href += singleData.id;
 
     }
 
@@ -127,8 +84,13 @@ function renderArtworkPage(ArtworkPageArray) {
 }
 
 
-function showSingleArtPage(art) {
 
+
+
+function showGallery(art) {
+
+
+    /***** Display single gallery template with WP Data in the DOM *****/
 
     const template = document.querySelector("template").content;
 
@@ -144,10 +106,14 @@ function showSingleArtPage(art) {
 
     copy.querySelector(".long-description").textContent = art.long_description;
 
+    /***** Check if there is a video in WP data and displying image instead *****/
 
     if (art.video) {
         copy.querySelector(".top-movie").src = art.video.guid;
-         copy.querySelector(".topimg").style.display = "none";
+                copy.querySelector(".top-movie").poster = art.cover_image.guid;
+
+        copy.querySelector(".topimg").style.display = "none";
+
     } else {
         copy.querySelector(".top-movie").style.display = "none";
         copy.querySelector(".topimg").style.display = "block";
@@ -156,6 +122,7 @@ function showSingleArtPage(art) {
 
 
 
+    /***** Removing images with empty src and assignning existing src from WP to img elements in the DOM *****/
 
     if (art.portrait_one) {
         copy.querySelector(".portrait1").src = art.portrait_one.guid;
@@ -203,6 +170,7 @@ function showSingleArtPage(art) {
     }
 
     document.querySelector("#single-art").appendChild(copy);
+        document.querySelector("footer").style.display = "flex";
 
 
 };
