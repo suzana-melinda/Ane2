@@ -6,10 +6,7 @@ window.addEventListener("load", getData);
 
 /***** Get Data from WP *****/
 
-
 const apiLink = "https://mymmd.dk/Ane/wp-json/wp/v2/artwork?per_page=100&_embed";
-
-
 
 
 /***** Fetch Data *****/
@@ -24,7 +21,6 @@ function getData() {
 }
 
 
-
 /***** Looping data and sending singleData to showData function *****/
 
 function loopData(data) {
@@ -34,7 +30,6 @@ function loopData(data) {
 
     });
     changeSlide();
-
 }
 
 
