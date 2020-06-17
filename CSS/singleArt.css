@@ -61,6 +61,7 @@ html {
     position: relative;
     width: 90%;
     height: auto;
+    max-height: 80vh;
     margin-left: 5%;
     margin-right: 5%;
 }
@@ -71,6 +72,7 @@ html {
     height: auto;
     margin-left: 5%;
     margin-right: 5%;
+    max-height: 80vh;
 }
 video[poster]{
     object-fit: cover;
@@ -78,12 +80,12 @@ video[poster]{
 }
 .long-description {
     position: relative;
-    font-style: italic;
-    width: 90%;
-    margin-left: 5%;
+    width: 80%;
+    margin-left: 10%;
     margin-right: 10%;
-    padding: 5% 0;
-    letter-spacing: 1.5px;
+    padding: 20px 0;
+    font-size: 1.2em;
+    letter-spacing: 1px;
 
 }
 
@@ -95,7 +97,6 @@ video[poster]{
     margin-left: 5%;
     margin-right: 10%;
     margin-bottom: 10%;
-    margin-top: 50px;
     grid-template-rows: auto;
 
 }
