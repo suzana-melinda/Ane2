@@ -64,6 +64,7 @@ html {
     max-height: 80vh;
     margin-left: 5%;
     margin-right: 5%;
+    object-fit: cover;
 }
 
 .top-movie {
